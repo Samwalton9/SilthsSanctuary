@@ -16,7 +16,8 @@ class Animal(models.Model):
 
     breed = models.CharField(null=True, blank=True)
 
-    # adopter = models.ForeignKey # FK to Adopter
+    # TODO: FK to Adopter, when that model is operational
+    # adopter = models.ForeignKey
 
     # Species selection
     SPECIES_CHOICES = [

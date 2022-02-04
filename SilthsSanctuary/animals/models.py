@@ -1,5 +1,7 @@
 from django.db import models
 
+from SilthsSanctuary.adverts.models import Advert
+
 
 class Animal(models.Model):
 
@@ -32,7 +34,7 @@ class Animal(models.Model):
     )
 
     advert = models.ForeignKey(
-        'adverts.advert',
+        Advert,
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
@@ -41,10 +43,7 @@ class Animal(models.Model):
 
 class CatsMedical(models.Model):
 
-    # We shouldn't be deleting medical records for animals without
-    # deleting the animal, so use models.PROTECT to prevent
-    # deletion of individual medical records.
-    animal = models.ForeignKey('Animal', on_delete=models.PROTECT)
+    animal = models.ForeignKey('Animal', on_delete=models.CASCADE)
 
     last_deflead = models.DateField(
         null=True,
